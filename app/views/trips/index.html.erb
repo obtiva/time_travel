@@ -11,6 +11,8 @@
     <div style="text-align: center"><img src="<%= h each.image_name %>" height="150" width="150"></div>
     <div class="trip_price"><%= number_to_currency each.price%></div>
     <%= link_to "Show Details", each %>
-    <%= link_to "Buy", "" %>
+    <% if current_user %>
+      <%= link_to "Buy", "" %>
+    <% end %>
   </div>
 <% end %>

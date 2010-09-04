@@ -24,9 +24,22 @@ Trip.create!(:name => "The Cubs Win The World Series",
     :end_date => "October 14, 1908", 
     :price => 10343)
     
-Trip.create!(:name => "Buy Microsoft at $5",
-    :tag_line => "Make A Mint",
-    :start_date => "March 14, 1986", 
-    :end_date => "March 16, 1908", 
+Trip.create!(:name => "Hike With Lewis And Clark",
+    :tag_line => "Enjoy the Great Outdoors",
+    :start_date => "May 14, 1804", 
+    :end_date => "September 23, 1806", 
     :price => 10343)
+    
+User.delete_all
+
+User.create!(
+    :persistence_token => "persistence token",
+    :first_name => "Fred",
+    :last_name => "Flintstone",
+    :login => "test",
+    :password_salt => "salt",
+    :password => "password",
+    :password_confirmation => "password",
+    :crypted_password => Authlogic::CryptoProviders::Sha512.encrypt("password" + "salt"),
+    :email => "test@test.com")
     
