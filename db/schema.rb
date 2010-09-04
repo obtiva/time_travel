@@ -9,7 +9,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100829195347) do
+ActiveRecord::Schema.define(:version => 20100904040002) do
+
+  create_table "trips", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "image_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "slug"
+    t.string   "tag_line"
+    t.integer  "price",       :default => 0
+  end
 
   create_table "users", :force => true do |t|
     t.string   "login",                              :null => false

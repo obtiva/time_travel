@@ -1,0 +1,16 @@
+<h1>Choose Your Time Adventure!</h1>
+
+<% @trips.each_with_index do |each, index| %>
+  <% last = (index + 1) % 3 == 0 %>
+  <div class="span-6 <%= last ? "last" : "" %> trip_entry">
+    <div class="trip_header"><%= h each.name %></div>
+    <div class="trip_tag"><%= h each.tag_line %></div>
+    <div class="trip_dates">
+      <%= each.start_date.to_s(:long) %> - <%= each.start_date.to_s(:long) %>
+    </div>
+    <div style="text-align: center"><img src="<%= h each.image_name %>" height="150" width="150"></div>
+    <div class="trip_price"><%= number_to_currency each.price%></div>
+    <%= link_to "Show Details", each %>
+    <%= link_to "Buy", "" %>
+  </div>
+<% end %>

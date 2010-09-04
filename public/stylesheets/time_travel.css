@@ -1,0 +1,13 @@
+.trip_entry {
+    padding-bottom: 10px;
+}
+
+.trip_header {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.trip_price {
+    text-align: center;
+    font-weight: bold;
+}

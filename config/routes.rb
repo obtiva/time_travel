@@ -1,6 +1,8 @@
-ActionController::Routing::Routes.draw do |map|  
+ActionController::Routing::Routes.draw do |map|
+  map.resources :trips
+  
   map.resource :user_session
-  map.root :controller => "user_sessions", :action => "new" 
+  map.root :controller => "trips", :action => "index" 
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
   
