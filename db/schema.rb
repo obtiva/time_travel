@@ -9,7 +9,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100904193520) do
+ActiveRecord::Schema.define(:version => 20100905022248) do
+
+  create_table "purchases", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "trip_id"
+    t.string   "pay_type"
+    t.date     "purchase_date"
+    t.date     "real_travel_date"
+    t.float    "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "trip_features", :force => true do |t|
+    t.integer  "trip_id"
+    t.string   "kind"
+    t.string   "slug"
+    t.text     "desc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "trips", :force => true do |t|
     t.string   "name"
@@ -22,6 +42,15 @@ ActiveRecord::Schema.define(:version => 20100904193520) do
     t.string   "slug"
     t.string   "tag_line"
     t.integer  "price",       :default => 0
+  end
+
+  create_table "user_preferences", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "kind"
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|

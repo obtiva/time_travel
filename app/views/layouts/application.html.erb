@@ -31,6 +31,10 @@
 
 <div class="span-4">
   Things To Do:
+  <br />
+  <% if current_user %>
+    <%= link_to "My Profile", user_path(:id => current_user) %>
+  <% end %>
 </div>
 
 <div class="span-20 last">

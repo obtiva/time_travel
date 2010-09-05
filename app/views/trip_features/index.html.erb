@@ -1,0 +1,26 @@
+<h1>Listing trip_features</h1>
+
+<table>
+  <tr>
+    <th>Trip</th>
+    <th>Type</th>
+    <th>Kind</th>
+    <th>Desc</th>
+  </tr>
+
+<% @trip_features.each do |trip_feature| %>
+  <tr>
+    <td><%=h trip_feature.trip %></td>
+    <td><%=h trip_feature.type %></td>
+    <td><%=h trip_feature.kind %></td>
+    <td><%=h trip_feature.desc %></td>
+    <td><%= link_to 'Show', trip_feature %></td>
+    <td><%= link_to 'Edit', edit_trip_feature_path(trip_feature) %></td>
+    <td><%= link_to 'Destroy', trip_feature, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New trip_feature', new_trip_feature_path %>

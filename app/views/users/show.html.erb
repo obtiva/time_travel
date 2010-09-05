@@ -1,37 +1,26 @@
+<h1>User Profile for: <%= h @user.first_name%> <%= h @user.last_name%> </h1>
+
 <p>
   <b>Login:</b>
   <%=h @user.login %>
 </p>
 
-<p>
-  <b>Login count:</b>
-  <%=h @user.login_count %>
-</p>
+<h2>Trips you have ordered</h2>
 
-<p>
-  <b>Last request at:</b>
-  <%=h @user.last_request_at %>
-</p>
+<ul>
+  <% @user.purchases.each do |purchase| %>
+    <li>
+      <%= h purchase.trip.name %>
+    </li>
+  <% end %>
+</ul>
 
-<p>
-  <b>Last login at:</b>
-  <%=h @user.last_login_at %>
-</p>
+<h3>Preferences</h3>
 
-<p>
-  <b>Current login at:</b>
-  <%=h @user.current_login_at %>
-</p>
-
-<p>
-  <b>Last login ip:</b>
-  <%=h @user.last_login_ip %>
-</p>
-
-<p>
-  <b>Current login ip:</b>
-  <%=h @user.current_login_ip %>
-</p>
-
-
-<%= link_to 'Edit', edit_account_path %>
+<ul>
+  <% for preference in @user.user_preferences %>
+    <li>
+      <%= h preference.kind.titlecase %>: <%= preference.name %>
+    </li>
+  <% end %>
+</ul>

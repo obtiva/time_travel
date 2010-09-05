@@ -12,7 +12,17 @@
     <div class="trip_price"><%= number_to_currency each.price%></div>
     <%= link_to "Show Details", each %>
     <% if current_user %>
-      <%= link_to "Buy", "" %>
+      <% purchased = false %>
+      <% current_user.purchases.each do |purchase| %>
+        <% if purchase.trip == each %>
+          <% purchased = true %>
+        <% end %>
+      <% end %>
+      <% if purchased %>
+        Bought!
+      <% else %>
+        <%= link_to "Buy", purchases_path(:id => each.id), :method => :post %>
+      <% end %>
     <% end %>
   </div>
 <% end %>
