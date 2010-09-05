@@ -5,6 +5,8 @@ mayflower = Trip.create!(
     :tag_line => "Enjoy The Cruise That Started It All",
     :start_date => "May 17, 1620", 
     :end_date => "November 21, 1620", 
+    :location => "Atlantic Ocean",
+    :activity => "Cruising",
     :price => 1204)
 
 shakespeare = Trip.create!(
@@ -12,6 +14,8 @@ shakespeare = Trip.create!(
     :tag_line => "See The Master As Intended",
     :start_date => "November 1, 1604", 
     :end_date => "October 31, 1605",
+    :location => "England",
+    :activity => "Theater",
     :price => 1313)
     
 mars = Trip.create!(
@@ -19,18 +23,24 @@ mars = Trip.create!(
     :tag_line => "Take One Huge Step For Man",
     :start_date => "July 16, 2047", 
     :end_date => "July 24, 2049",
+    :location => "Outer Space",
+    :activity => "Space Travel",
     :price => 2093)
     
 cubbies = Trip.create!(:name => "The Cubs Win The World Series",
     :tag_line => "Experience The Ultimate Rarity",
     :start_date => "October 10, 1908", 
-    :end_date => "October 14, 1908", 
+    :end_date => "October 14, 1908",
+    :location => "USA",
+    :activity => "Baseball", 
     :price => 10343)
     
 lewis = Trip.create!(:name => "Hike With Lewis And Clark",
     :tag_line => "Enjoy the Great Outdoors",
     :start_date => "May 14, 1804", 
     :end_date => "September 23, 1806", 
+    :location => "USA",
+    :activity => "Hiking",
     :price => 10343)
     
 User.delete_all

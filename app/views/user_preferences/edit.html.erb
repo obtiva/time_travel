@@ -1,28 +1,50 @@
-<h1>Editing user_preference</h1>
+<h1>Editing Your Preferences</h1>
 
-<% form_for(@user_preference) do |f| %>
-  <%= f.error_messages %>
+<% form_tag user_preferences_path do %>
 
-  <p>
-    <%= f.label :user %><br />
-    <%= f.text_field :user %>
-  </p>
-  <p>
-    <%= f.label :type %><br />
-    <%= f.text_field :type %>
-  </p>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
+  <h2>What Centuries Do You Like To Visit?</h2>
+  <% 2100.times do |i| %>
+    <% if i.to_s.ends_with?("00") || i == 0 %>
+      <% checked = false %>
+      <% current_user.user_preferences.each do |pref| %>
+        <% if pref.kind == "century" && pref.name == i.to_s + "s" %>
+          <% checked = true %>
+        <% end %>
+      <% end %>
+      <%= check_box_tag "century[]", i, checked %> <%= i %>'s
+      <br />
+    <% end %>
+  <% end %>
+  <br />
+  
+  <h2>What Part of the World Do You Like To Visit?</h2>
+  <% areas = ["USA", "North America", "Europe", "Asia", "Africa", "Australia",
+      "South America", "Other"] %>
+  <% areas.each do |area| %>
+    <% checked = false %>
+    <% current_user.user_preferences.each do |pref| %>
+      <% if pref.kind == "area" && pref.name == area %>
+        <% checked = true %>
+      <% end %>
+    <% end %>
+    <%= check_box_tag "area[]", area, checked %> <%= area %>
+    <br />
+  <% end %>
+  
+  <h2>What Activities Do You Enjoy?</h2>
+  <% activities = ["Baseball", "Cruises", "Dancing", "Hiking", "Music", 
+    "Space Travel", "Scuba Diving", "Theater", "War"] %>
+  <% activities.each do |activity| %>
+    <% checked = false %>
+    <% current_user.user_preferences.each do |pref| %>
+      <% if pref.kind == "activity" && pref.name == activity %>
+        <% checked = true %>
+      <% end %>
+    <% end %>
+    <%= check_box_tag "activity[]", activity, checked %> <%= activity %>
+    <br />
+  <% end %>
+  
+  
+  <%= submit_tag %>
 <% end %>
-
-<%= link_to 'Show', @user_preference %> |
-<%= link_to 'Back', user_preferences_path %>

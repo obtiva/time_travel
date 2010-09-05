@@ -34,6 +34,8 @@
   <br />
   <% if current_user %>
     <%= link_to "My Profile", user_path(:id => current_user) %>
+    <br/>
+    <%= link_to "Edit My Preferences", edit_user_preference_path(:id => current_user) %>
   <% end %>
 </div>
 

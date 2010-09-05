@@ -34,23 +34,25 @@ class UserPreferencesController < ApplicationController
 
   # GET /user_preferences/1/edit
   def edit
-    @user_preference = UserPreference.find(params[:id])
+    @preferences = current_user.user_preferences
   end
 
   # POST /user_preferences
   # POST /user_preferences.xml
   def create
-    @user_preference = UserPreference.new(params[:user_preference])
-
-    respond_to do |format|
-      if @user_preference.save
-        format.html { redirect_to(@user_preference, :notice => 'UserPreference was successfully created.') }
-        format.xml  { render :xml => @user_preference, :status => :created, :location => @user_preference }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @user_preference.errors, :status => :unprocessable_entity }
+    User.transaction do
+      current_user.user_preferences.clear
+      params[:century].each do |century|
+        current_user.user_preferences.create(:kind => "century", :name => "#{century}s")
+      end
+      params[:area].each do |area|
+        current_user.user_preferences.create(:kind => "area", :name => area)
+      end
+      params[:activity].each do |activity|
+        current_user.user_preferences.create(:kind => "activity", :name => activity)
       end
     end
+    redirect_to user_path(current_user)
   end
 
   # PUT /user_preferences/1
