@@ -1,0 +1,52 @@
+.trip_entry {
+    padding-bottom: 10px;
+    display: inline;
+    float: left;
+    height: 300px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: 250px;
+    z-index: 11;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    background-color: lightblue;
+}
+
+.trip_index_header {
+    font-weight: bold;
+    text-align: center;
+    font-size: 4em;
+}
+
+.trip_header {
+    font-weight: bold;
+    color: blue;
+    font-size: 1.3em;
+    padding: 6px 10px 0px;
+    text-align: center;
+    width: 230px;
+}
+
+.trip_tag {
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.trip_dates {
+    text-align: center;
+}
+
+.trip_links {
+    text-align: center;
+}
+
+.trip_header a {
+    color: white;
+    text-decoration: none;
+}
+
+.trip_price {
+    text-align: center;
+    font-weight: bold;
+}

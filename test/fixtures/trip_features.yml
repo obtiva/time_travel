@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  trip: 
+  type: MyString
+  kind: MyString
+  desc: MyText
+
+two:
+  trip: 
+  type: MyString
+  kind: MyString
+  desc: MyText

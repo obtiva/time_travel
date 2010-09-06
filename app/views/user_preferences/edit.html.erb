@@ -1,0 +1,50 @@
+<h1>Editing Your Preferences</h1>
+
+<% form_tag user_preferences_path do %>
+
+  <h2>What Centuries Do You Like To Visit?</h2>
+  <% 2100.times do |i| %>
+    <% if i.to_s.ends_with?("00") || i == 0 %>
+      <% checked = false %>
+      <% current_user.user_preferences.each do |pref| %>
+        <% if pref.kind == "century" && pref.name == i.to_s + "s" %>
+          <% checked = true %>
+        <% end %>
+      <% end %>
+      <%= check_box_tag "century[]", i, checked %> <%= i %>'s
+      <br />
+    <% end %>
+  <% end %>
+  <br />
+  
+  <h2>What Part of the World Do You Like To Visit?</h2>
+  <% areas = ["USA", "North America", "Europe", "Asia", "Africa", "Australia",
+      "South America", "Other"] %>
+  <% areas.each do |area| %>
+    <% checked = false %>
+    <% current_user.user_preferences.each do |pref| %>
+      <% if pref.kind == "area" && pref.name == area %>
+        <% checked = true %>
+      <% end %>
+    <% end %>
+    <%= check_box_tag "area[]", area, checked %> <%= area %>
+    <br />
+  <% end %>
+  
+  <h2>What Activities Do You Enjoy?</h2>
+  <% activities = ["Baseball", "Cruises", "Dancing", "Hiking", "Music", 
+    "Space Travel", "Scuba Diving", "Theater", "War"] %>
+  <% activities.each do |activity| %>
+    <% checked = false %>
+    <% current_user.user_preferences.each do |pref| %>
+      <% if pref.kind == "activity" && pref.name == activity %>
+        <% checked = true %>
+      <% end %>
+    <% end %>
+    <%= check_box_tag "activity[]", activity, checked %> <%= activity %>
+    <br />
+  <% end %>
+  
+  
+  <%= submit_tag %>
+<% end %>
