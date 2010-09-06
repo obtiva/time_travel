@@ -15,6 +15,16 @@
   <% end %>
 </ul>
 
+<h3>Friends</h3>
+
+<ul>
+  <% @user.friends.each do |friend| %>
+    <li>
+      <%= h friend.first_name %> <%= h friend.last_name %>
+    </li>
+  <% end %>
+</ul>
+
 <h3>Preferences</h3>
 
 <ul>

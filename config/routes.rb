@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :friends
+
   map.resources :trip_features
 
   map.resources :user_preferences

@@ -7,6 +7,7 @@ mayflower = Trip.create!(
     :end_date => "November 21, 1620", 
     :location => "Atlantic Ocean",
     :activity => "Cruising",
+    :image_name => "mayflower.jpg",
     :price => 1204)
 
 shakespeare = Trip.create!(
@@ -16,6 +17,7 @@ shakespeare = Trip.create!(
     :end_date => "October 31, 1605",
     :location => "England",
     :activity => "Theater",
+    :image_name => "shakespeare.jpg",
     :price => 1313)
     
 mars = Trip.create!(
@@ -25,6 +27,7 @@ mars = Trip.create!(
     :end_date => "July 24, 2049",
     :location => "Outer Space",
     :activity => "Space Travel",
+    :image_name => "mars.jpg",
     :price => 2093)
     
 cubbies = Trip.create!(:name => "The Cubs Win The World Series",
@@ -33,6 +36,7 @@ cubbies = Trip.create!(:name => "The Cubs Win The World Series",
     :end_date => "October 14, 1908",
     :location => "USA",
     :activity => "Baseball", 
+    :image_name => "cubbies.jpg",
     :price => 10343)
     
 lewis = Trip.create!(:name => "Hike With Lewis And Clark",
@@ -41,20 +45,68 @@ lewis = Trip.create!(:name => "Hike With Lewis And Clark",
     :end_date => "September 23, 1806", 
     :location => "USA",
     :activity => "Hiking",
+    :image_name => "lewis.jpg",
+    :price => 10343)
+    
+lewis = Trip.create!(:name => "Visit Xerox PARC",
+    :tag_line => "See the Lab That Started It All",
+    :start_date => "December 12, 1979", 
+    :end_date => "December 13, 1979", 
+    :location => "USA",
+    :activity => "Geeking Out",
+    :image_name => "parc.jpg",
     :price => 10343)
     
 User.delete_all
 
-user = User.create!(
+fred = User.create!(
     :persistence_token => "persistence token",
     :first_name => "Fred",
     :last_name => "Flintstone",
-    :login => "test",
+    :login => "fred",
     :password_salt => "salt",
     :password => "password",
     :password_confirmation => "password",
     :crypted_password => Authlogic::CryptoProviders::Sha512.encrypt("password" + "salt"),
-    :email => "test@test.com")
+    :email => "fred@test.com")
     
-user.user_preferences.create(:kind => "century", :name => "1600s")
+fred.user_preferences.create(:kind => "century", :name => "1600s")
+
+wilma = User.create!(
+    :persistence_token => "persistence token",
+    :first_name => "Wilma",
+    :last_name => "Flintstone",
+    :login => "wilma",
+    :password_salt => "salt",
+    :password => "password",
+    :password_confirmation => "password",
+    :crypted_password => Authlogic::CryptoProviders::Sha512.encrypt("password" + "salt"),
+    :email => "wilma@test.com")
+    
+barney = User.create!(
+    :persistence_token => "persistence token",
+    :first_name => "Barney",
+    :last_name => "Rubble",
+    :login => "barney",
+    :password_salt => "salt",
+    :password => "password",
+    :password_confirmation => "password",
+    :crypted_password => Authlogic::CryptoProviders::Sha512.encrypt("password" + "salt"),
+    :email => "barney@test.com")
+        
+betty = User.create!(
+    :persistence_token => "persistence token",
+    :first_name => "Betty",
+    :last_name => "Rubble",
+    :login => "betty",
+    :password_salt => "salt",
+    :password => "password",
+    :password_confirmation => "password",
+    :crypted_password => Authlogic::CryptoProviders::Sha512.encrypt("password" + "salt"),
+    :email => "betty@test.com")
+    
+Friend.delete_all    
+    
+Friend.create(:sender => fred, :receiver => barney)
+Friend.create(:sender => wilma, :receiver => betty)
     

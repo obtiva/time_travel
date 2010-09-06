@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_filter :require_user, :only => [:show, :edit, :update]
   
   def index
+    @users = User.all(:order => "last_name ASC")
   end
   
   def new

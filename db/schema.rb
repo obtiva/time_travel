@@ -9,7 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100905022248) do
+ActiveRecord::Schema.define(:version => 20100906160248) do
+
+  create_table "friends", :force => true do |t|
+    t.integer  "request_sender_id"
+    t.integer  "request_receiver_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "purchases", :force => true do |t|
     t.integer  "user_id"
@@ -42,6 +49,8 @@ ActiveRecord::Schema.define(:version => 20100905022248) do
     t.string   "slug"
     t.string   "tag_line"
     t.integer  "price",       :default => 0
+    t.string   "location"
+    t.string   "activity"
   end
 
   create_table "user_preferences", :force => true do |t|

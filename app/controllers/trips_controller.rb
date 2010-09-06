@@ -3,7 +3,9 @@ class TripsController < ApplicationController
   # GET /trips.xml
   def index
     @trips = Trip.all
-
+    if current_user
+      @trips = recommend_for_current_user
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @trips }
@@ -79,5 +81,41 @@ class TripsController < ApplicationController
       format.html { redirect_to(trips_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  private
+  
+  def recommend_for_current_user
+    points = {}
+    @trips.each do |trip|
+      trip_points = 0
+      
+      current_user.user_preferences.each do |pref|
+        if pref.kind == "century"
+          if (trip.start_date.to_s + "'s" == pref.name) 
+            trip_points += 5
+          end
+          if (trip.end_date.to_s + "'s" == pref.name)
+            trip_points += 5
+          end
+        elsif pref.kind == "area"
+          if (pref.name == trip.location)
+            trip_points += 7
+          end
+        elsif pref.kind == "activity"
+          if (pref.name == trip.activity)
+            trip_points += 8
+          end
+        elsif (pref.name == "Europe" && trip.location == "England")
+          trip_points += 5
+        elsif (pref.name == "Other" && trip.location == "Outer Space")
+          trip_points += 3
+        elsif (pref.name == "Other" && trip.location == "Atlantic Ocean")
+          trip_points += 5
+        end
+      end
+      points[trip] = trip_points
+    end
+    points.each_pair.sort_by { |key, value| value}.map { |key, value| key }.reverse
   end
 end
