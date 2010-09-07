@@ -57,6 +57,60 @@ lewis = Trip.create!(:name => "Visit Xerox PARC",
     :image_name => "parc.jpg",
     :price => 10343)
     
+washington = Trip.create!(:name => "Cross The Delaware",
+    :tag_line => "A Winter Nature Hike With Washington",
+    :start_date => "December 25, 1776", 
+    :end_date => "December 26, 1776", 
+    :location => "USA",
+    :activity => "Hiking",
+    :image_name => "washington.jpg",
+    :price => 21353)
+    
+napoleon = Trip.create!(:name => "Escape From Elba",
+    :tag_line => "A Hundred Days With Napoleon",
+    :start_date => "February 26, 1815", 
+    :end_date => "June 20, 1815", 
+    :location => "USA",
+    :activity => "War",
+    :image_name => "napoleon.jpg",
+    :price => 34645)
+    
+washington = Trip.create!(:name => "Climb Everest With Hillary",
+    :tag_line => "Relive The Most Famous Climb",
+    :start_date => "March 1, 1953", 
+    :end_date => "June 15, 1953", 
+    :location => "Himalayas",
+    :activity => "Mountain Climbing",
+    :image_name => "everest.jpg",
+    :price => 21353)
+    
+beatles = Trip.create!(:name => "The Beatles In Concert",
+    :tag_line => "Attend the Historic Final Tour",
+    :start_date => "August 12, 1966", 
+    :end_date => "August 29, 1966", 
+    :location => "USA",
+    :activity => "Concert Going",
+    :image_name => "beatles.jpg",
+    :price => 33450)
+    
+enigma = Trip.create!(:name => "Crack The Engigma",
+    :tag_line => "Use the First Turing Machine",
+    :start_date => "September 15, 1939", 
+    :end_date => "January 1, 1943", 
+    :location => "UK",
+    :activity => "Geeking Out",
+    :image_name => "enigma.jpg",
+    :price => 33450)
+    
+polo = Trip.create!(:name => "Tour With Marco Polo",
+    :tag_line => "Travel The Exotic Spice Road",
+    :start_date => "January 1, 1271", 
+    :end_date => "January 1, 1275", 
+    :location => "China",
+    :activity => "Hiking",
+    :image_name => "polo.jpg",
+    :price => 33450)
+    
 User.delete_all
 
 fred = User.create!(
