@@ -20,6 +20,10 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem "authlogic"
+  config.gem "rspec", :lib => false, :version => ">= 1.2.0"
+  config.gem "rspec-rails", :lib => false, :version => ">= 1.2.0"
+  config.gem "database_cleaner"
+  #config.gem "cucumber-rails"
 
 
   # Only load the plugins named here, in the order given (default is alphabetical).
