@@ -6,9 +6,15 @@ me know at nrappin@obtiva.com if something is missing.
 This app should have all of it's dependencies in the vendor/gems and 
 vendor/plugin directories.
 
-It assumes that the MySQL gem and Nokogiri are available.
+You may need to run 
 
-It should run with
+rake gems:refresh_specs
+
+and
+
+gem install mysql
+
+Then run:
 
 rake db:create
 rake db:migrate
