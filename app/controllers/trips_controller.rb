@@ -89,56 +89,7 @@ class TripsController < ApplicationController
   def recommend_for_current_user(trip_list)
     points = {}
     trip_list.each do |trip|
-      trip_points = 0
-      
-      current_user.user_preferences.each do |pref|
-        if pref.kind == "century"
-          if (trip.start_date.to_s + "'s" == pref.name) 
-            trip_points += 5
-          end
-          if (trip.end_date.to_s + "'s" == pref.name)
-            trip_points += 5
-          end
-        end
-        if (pref.name == "Other" && trip.location == "Outer Space")
-          trip_points += 3
-        end
-        if pref.kind == "area"
-          if (pref.name == trip.location)
-            trip_points += 7
-          end
-        end
-        if (pref.name == "Europe" && trip.location == "England")
-          trip_points += 5
-        end
-        if (pref.name == "Mountain Climbing" && trip.activity == "Hiking")
-          trip_points += 3
-        end
-        if (pref.name == "Europe" && trip.location == "France")
-          trip_points += 5
-        end
-        if (pref.name == "Asia" && trip.location == "China")
-          trip_points += 5
-        end
-        if (pref.name == "Concert Going" && trip.activity == "Theater")
-          trip_points += 3
-        end
-        if pref.kind == "activity"
-          if (pref.name == trip.activity)
-            trip_points += 8
-          end
-        end
-        if (pref.name == "Asia" && trip.location == "Himalayas")
-          trip_points += 5
-        end
-        if (pref.name == "Europe" && trip.location == "UK")
-          trip_points += 3
-        end
-        if (pref.name == "Other" && trip.location == "Atlantic Ocean")
-          trip_points += 5
-        end
-      end
-      points[trip] = trip_points
+      points[trip] = trip.preference_points(current_user)
     end
     points.each_pair.sort_by { |key, value| value}.map { |key, value| key }.reverse
   end
