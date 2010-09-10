@@ -26,7 +26,29 @@ describe User do
       Purchase.create!(:user => @user, :trip => @trip_2)
       @user.unpurchased_trips.should be_empty
     end
+  end
+  
+  describe "friends on trip" do
     
+    before(:each) do
+      @trip_1 = Trip.create!(:name => "Trip1")
+      @trip_2 = Trip.create!(:name => "Trip2")
+      @me = User.create!(:login => "me_me_me", :email => "me@test.com",
+          :password => "password", :password_confirmation => "password")
+      @you = User.create!(:login => "you", :email => "you@test.com",
+          :password => "password", :password_confirmation => "password")
+      Friend.create!(:sender => @me, :receiver => @you)
+    end
+    
+    it "returns empty if no friends" do
+      @me.friends.should == [@you]
+      @me.friends_on_trip(@trip_1).should be_empty
+    end
+    
+    it "returns friend if a friend" do
+      @trip_1.stub!(:purchases).and_return([stub(:user => @you)])
+      @me.friends_on_trip(@trip_1).should == [@you]
+    end
     
   end
   
