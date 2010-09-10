@@ -98,35 +98,42 @@ class TripsController < ApplicationController
           if (trip.end_date.to_s + "'s" == pref.name)
             trip_points += 5
           end
-        elsif (pref.name == "Other" && trip.location == "Outer Space")
+        end
+        if (pref.name == "Other" && trip.location == "Outer Space")
           trip_points += 3
-        elsif pref.kind == "area"
+        end
+        if pref.kind == "area"
           if (pref.name == trip.location)
             trip_points += 7
           end
-        elsif (pref.name == "Europe" && trip.location == "England")
+        end
+        if (pref.name == "Europe" && trip.location == "England")
           trip_points += 5
-        elsif (pref.name == "Mountain Climbing" && trip.activity == "Hiking")
+        end
+        if (pref.name == "Mountain Climbing" && trip.activity == "Hiking")
           trip_points += 3
-        elsif (pref.name == "Europe" && trip.location == "France")
+        end
+        if (pref.name == "Europe" && trip.location == "France")
           trip_points += 5
-        elsif pref.kind == "area"
-          if (pref.name == trip.location)
-            trip_points += 7
-          end
-        elsif (pref.name == "Asia" && trip.location == "China")
+        end
+        if (pref.name == "Asia" && trip.location == "China")
           trip_points += 5
-        elsif (pref.name == "Concert Going" && trip.activity == "Theater")
+        end
+        if (pref.name == "Concert Going" && trip.activity == "Theater")
           trip_points += 3
-        elsif pref.kind == "activity"
+        end
+        if pref.kind == "activity"
           if (pref.name == trip.activity)
             trip_points += 8
           end
-        elsif (pref.name == "Asia" && trip.location == "Himalayas")
+        end
+        if (pref.name == "Asia" && trip.location == "Himalayas")
           trip_points += 5
-        elsif (pref.name == "Europe" && trip.location == "UK")
+        end
+        if (pref.name == "Europe" && trip.location == "UK")
           trip_points += 3
-        elsif (pref.name == "Other" && trip.location == "Atlantic Ocean")
+        end
+        if (pref.name == "Other" && trip.location == "Atlantic Ocean")
           trip_points += 5
         end
       end
