@@ -18,7 +18,8 @@ class User < ActiveRecord::Base
   end
   
   def unpurchased_trips
-    Trip.all(:conditions => ["id NOT IN (?)", purchases.map(&:trip_id).join(",")])
+    return Trip.all if purchases.empty?
+    Trip.all(:conditions => ["id NOT IN (?)", purchases.map(&:trip_id)])
   end
   
   
