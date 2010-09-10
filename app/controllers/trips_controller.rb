@@ -2,9 +2,10 @@ class TripsController < ApplicationController
   # GET /trips
   # GET /trips.xml
   def index
-    @trips = Trip.all
     if current_user
-      @trips = recommend_for_current_user
+      @trips = recommend_for_current_user(current_user.unpurchased_trips)
+    else
+      @trips = Trip.all
     end
     respond_to do |format|
       format.html # index.html.erb
@@ -85,9 +86,9 @@ class TripsController < ApplicationController
   
   private
   
-  def recommend_for_current_user
+  def recommend_for_current_user(trip_list)
     points = {}
-    @trips.each do |trip|
+    trip_list.each do |trip|
       trip_points = 0
       
       current_user.user_preferences.each do |pref|
