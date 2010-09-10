@@ -17,5 +17,9 @@ class User < ActiveRecord::Base
     friends
   end
   
+  def unpurchased_trips
+    Trip.all(:conditions => ["id NOT IN (?)", purchases.map(&:trip_id).join(",")])
+  end
+  
   
 end
